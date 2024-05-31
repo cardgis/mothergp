@@ -16,8 +16,15 @@ export default function Home() {
         <Banner />
         <ProductFeed />
       </main>
+      <div></div>
 
       {/* ---- ---- */}
     </div>
   );
 }
+
+// export async function getServerSideProps(context) {
+//   const Product = await fetch(
+//     "ep-snowy-union-a4t26bx0-pooler.us-east-1.aws.neon.tech"
+//   ).then((res) => res.json());
+// }
