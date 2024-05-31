@@ -6,4 +6,7 @@
   .link {
     @apply cursor-pointer hover:underline;
   }
+  .button {
+    @apply p-2 text-xs border border-green-300 rounded-sm md:text-sm bg-gradient-to-b from-green-200 to-green-400 focus:outline-none focus:ring-2 focus:ring-green-600 active:from-green-600 hover:bg-green-600;
+  }
 }

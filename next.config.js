@@ -1,8 +1,15 @@
 module.exports = {
   images: {
-    domains: [
-      "https://png.pngtree.com/png-clipart/20200709/original/pngtree-delivery-retail-truck-association-logo-symbol-png-image_3570987.jpg",
-      "png.pngtree.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.pngtree.com", // Ajoutez d'autres domaines ici
+      },
+      // ... autres domaines
+      {
+        protocol: "https",
+        hostname: "*.5five.com",
+      },
     ],
   },
 };
