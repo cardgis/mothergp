@@ -1,4 +1,3 @@
-// app/api/products/route.ts
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
@@ -6,11 +5,13 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    const products = await prisma.product.findMany(); // Récupérer tous les produits
-    console.log(NextResponse);
-    return NextResponse.json(products);
+    const Products = await prisma.product.findMany(); // Récupérer tous les produits
+    if (Products.length > 0) {
+      console.log("Produits récupérés avec succès :", Products);
+    }
+    return NextResponse.json(Products);
   } catch (error) {
-    console.error("Erreur lors de la récupération des produits :", error);
+    console.log("Erreur lors de la récupération des produits :", error);
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   } finally {
     await prisma.$disconnect(); // Fermer la connexion Prisma
