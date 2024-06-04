@@ -2,7 +2,8 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
-import Product from "../components/Product";
+import Footer from "../components/Footer";
+
 export default function Home() {
   return (
     <div>
@@ -17,6 +18,9 @@ export default function Home() {
       </main>
       <section className="">
         <ProductFeed />
+      </section>
+      <section>
+        <Footer />
       </section>
 
       {/* ---- ---- */}

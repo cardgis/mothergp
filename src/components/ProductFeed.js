@@ -44,13 +44,9 @@ export default function ProductFeed() {
     <>
       {/* <p className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3"></p> */}
       {/* <p className="relative z-30 flex flex-col p-10 m-5 bg-white "></p> */}
-
+      {/* <h4>Profitez de nos meilleures offres du moment</h4> */}
       <div className="relative z-30 flex flex-col p-10 m-5 bg-white">
-        <h1 className="mb-5 text-xs font-bold text-center">
-          {" "}
-          Profitez de nos meilleures offres du moment
-        </h1>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 md:-mt-52">
           {products.map(
             (
               product // product est maintenant inféré comme étant de type Product

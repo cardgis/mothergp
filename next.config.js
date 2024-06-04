@@ -10,6 +10,10 @@ module.exports = {
         protocol: "https",
         hostname: "*.5five.com",
       },
+      // {
+      //   protocol: "https",
+      //   hostname: "*.png.pngtree.com",
+      // },
     ],
   },
 };

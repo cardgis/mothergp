@@ -1,11 +1,17 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { initFirebase } from "../../firebase";
 import {
   MenuIcon,
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { getAuth } from "firebase/auth";
 
+initFirebase();
+const auth = getAuth();
 function Header() {
   return (
     <>
@@ -31,10 +37,10 @@ function Header() {
             <SearchIcon className="h-12 p-4 " />
           </div>
           <div className="flex items-center mx-6 space-x-6 text-xs text-white whitespace-nowrap">
-            <div className="link">
+            <div onClick={signIn} className="link">
               <p>Hey Alex</p>
               <p className="font-extrabold cursor-pointer md:text-sm link">
-                Account & Lists
+                Connexion
               </p>
             </div>
 
@@ -50,7 +56,7 @@ function Header() {
               </span>
               <ShoppingCartIcon className="h-10 " />
               <p className="hidden mt-2 font-extrabold cursor-pointer md:inline md:text-sm link">
-                Basket
+                Panier
               </p>
             </div>
           </div>

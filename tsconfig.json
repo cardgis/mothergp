@@ -21,10 +21,12 @@
   },
   "include": [
     "next-env.d.ts",
+    "next-firebase.js",
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/ProductFeed.js"
+    "src/components/ProductFeed.js",
+    "src/pages/api/auth/[...nextauth].js"
   ],
   "exclude": ["node_modules"]
 }
