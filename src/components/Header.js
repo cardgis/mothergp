@@ -13,7 +13,7 @@ import { getAuth } from "firebase/auth";
 initFirebase();
 const auth = getAuth();
 function Header() {
-  const [session, status] = useSession();
+  const { session, status } = useSession();
   return (
     <>
       <header>
