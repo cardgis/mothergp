@@ -13,7 +13,7 @@ import { getAuth } from "firebase/auth";
 initFirebase();
 const auth = getAuth();
 function Header() {
-  const { session, status } = useSession();
+  const { session } = useSession();
   return (
     <>
       <header>
@@ -39,11 +39,11 @@ function Header() {
           </div>
           <div className="flex items-center mx-6 space-x-6 text-xs text-white whitespace-nowrap">
             <div onClick={signIn} className="link">
-              <p>
+              {/* <p>
                 {status === "authenticated" && ( // Check if user is authenticated
                   <p>Bonjour, {session.user.name}!</p> // Display greeting with name
                 )}
-              </p>
+              </p> */}
               <p className="font-extrabold cursor-pointer md:text-sm link">
                 Connexion
               </p>
