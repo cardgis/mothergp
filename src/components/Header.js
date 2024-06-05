@@ -7,14 +7,14 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession, loading } from "next-auth/react";
 import { getAuth } from "firebase/auth";
 
 initFirebase();
 const auth = getAuth();
 function Header() {
   //const { session } = useSession();
-  const { session, status } = useSession();
+  const [session] = useSession();
   return (
     <>
       <header>
@@ -40,14 +40,17 @@ function Header() {
           </div>
           <div className="flex items-center mx-6 space-x-6 text-xs text-white whitespace-nowrap">
             <div onClick={signIn} className="link">
-              {/* <p>
-                {status === "authenticated" && ( // Check if user is authenticated
-                  <p>Bonjour, {session.user.name}!</p> // Display greeting with name
-                )}
-              </p> */}
               <p className="font-extrabold cursor-pointer md:text-sm link">
                 Connexion
               </p>
+              <div>
+                {session && (
+                  <>
+                    <h1>Bonjour {session.user.email}</h1>
+                    <button onClick={signOut}>Deconnexion</button>
+                  </>
+                )}
+              </div>
             </div>
 
             <div className="link">
