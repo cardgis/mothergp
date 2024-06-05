@@ -12,7 +12,7 @@ import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
 
 function handleSignOut() {
-  signOut({ callbackUrl: "/" });
+  signOut({ callbackUrl: "https://mothergp.vercel.app" });
 }
 initFirebase();
 const auth = getAuth();
