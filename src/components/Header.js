@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { initFirebase } from "../../firebase";
 import {
@@ -18,6 +19,7 @@ initFirebase();
 const auth = getAuth();
 function Header() {
   //const { session } = useSession();
+  const router = useRouter();
   const { data: session, status } = useSession();
   return (
     <>
@@ -65,7 +67,10 @@ function Header() {
                 Orders
               </p>
             </div>
-            <div className="relative flex items-center link">
+            <div
+              onClick={() => router.push("/checkout")}
+              className="relative flex items-center link"
+            >
               <span className="absolute top-0 right-0 w-4 h-4 font-bold text-center text-black bg-green-500 rounded-full md:right-10">
                 0
               </span>
