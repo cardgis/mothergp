@@ -14,7 +14,7 @@ initFirebase();
 const auth = getAuth();
 function Header() {
   //const { session } = useSession();
-  const { data: session, status } = useSession();
+  const { session, status } = useSession();
   return (
     <>
       <header>
@@ -40,8 +40,6 @@ function Header() {
           </div>
           <div className="flex items-center mx-6 space-x-6 text-xs text-white whitespace-nowrap">
             <div onClick={signIn} className="link">
-              if (status === "authenticated" ?{" "}
-              <h1>Bonjour, {session.user?.name}!</h1> : "") {}
               {/* <p>
                 {status === "authenticated" && ( // Check if user is authenticated
                   <p>Bonjour, {session.user.name}!</p> // Display greeting with name
