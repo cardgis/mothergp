@@ -40,12 +40,10 @@ function Header() {
           </div>
           <div className="flex items-center mx-6 space-x-6 text-xs text-white whitespace-nowrap">
             <div onClick={signIn} className="link">
-              <p className="font-extrabold cursor-pointer md:text-sm link">
-                Connexion
-              </p>
+              <p></p>
               <div>
-                <div>
-                  {status === "loading" && <p>Vérification de la session...</p>}
+                <div className="font-extrabold cursor-pointer md:text-sm link">
+                  {status === "loading" && <p>Connexion</p>}
                   {status === "authenticated" && (
                     <>
                       <h1>Bonjour, {session.user.name}</h1>
@@ -56,13 +54,6 @@ function Header() {
                     <p>Veuillez vous connecter.</p>
                   )}
                 </div>
-
-                {/* {session && (
-                  <>
-                    <h1>Bonjour {session.user.email}</h1>
-                    <button onClick={signOut}>Deconnexion</button>
-                  </>
-                )} */}
               </div>
             </div>
 
