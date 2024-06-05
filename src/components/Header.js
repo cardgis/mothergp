@@ -48,7 +48,7 @@ function Header() {
                   {status === "loading" && <p>Vérification de la session...</p>}
                   {status === "authenticated" && (
                     <>
-                      <h1>Bonjour, {session.user.email}</h1>
+                      <h1>Bonjour, {session.user.name}</h1>
                       <button onClick={() => signOut()}>Déconnexion</button>
                     </>
                   )}
