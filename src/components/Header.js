@@ -9,7 +9,11 @@ import {
 } from "@heroicons/react/outline";
 import { signIn, signOut, useSession, status } from "next-auth/react";
 import { getAuth } from "firebase/auth";
+import { useRouter } from "next/router";
 
+function handleSignOut() {
+  signOut({ callbackUrl: "/" });
+}
 initFirebase();
 const auth = getAuth();
 function Header() {
