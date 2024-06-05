@@ -9,11 +9,11 @@ import {
 } from "@heroicons/react/outline";
 import { signIn, signOut, useSession, status } from "next-auth/react";
 import { getAuth } from "firebase/auth";
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 
-function handleSignOut() {
-  signOut({ callbackUrl: "https://mothergp.vercel.app" });
-}
+// function handleSignOut() {
+//   signOut({ callbackUrl: "https://mothergp.vercel.app" });
+// }
 initFirebase();
 const auth = getAuth();
 function Header() {
@@ -43,7 +43,7 @@ function Header() {
             <SearchIcon className="h-12 p-4 " />
           </div>
           <div className="flex items-center mx-6 space-x-6 text-xs text-white whitespace-nowrap">
-            <div onClick={signIn} className="link">
+            <div onClick={!session ? signIn : signOut} className="link">
               <p></p>
               <div>
                 <div className="font-extrabold cursor-pointer md:text-sm link">
