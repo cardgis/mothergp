@@ -50,9 +50,7 @@ function Header() {
                       <button onClick={signOut}>Déconnexion</button>
                     </>
                   )}
-                  {status === "unauthenticated" && (
-                    <p>Veuillez vous connecter.</p>
-                  )}
+                  {status === "unauthenticated" && <p>Connexion</p>}
                 </div>
               </div>
             </div>
