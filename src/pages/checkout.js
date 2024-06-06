@@ -8,7 +8,7 @@ function checkout() {
         <Header />
 
         <main className="mx-auto max-w-screen-2xl lg:flex">
-          <div>I am the page </div>
+          <div>I am the game</div>
         </main>
       </div>
     </>
