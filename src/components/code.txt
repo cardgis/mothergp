@@ -1,0 +1,14 @@
+ // const addItemToCart = (product) => {
+  //   if (cartItem.findIndex((pro) => pro.id === products.id) === -1) {
+  //     setCartItem((prevState) => [...prevState, products]);
+  //   } else {
+  //     setCartItem((prevState) => {
+  //       return prevState.map((item) => {
+  //         return item.id === product.id
+  //           ? { ...item, quantity: item.quantity + 1 }
+  //           : item;
+  //       });
+  //     });
+  //   }
+  //   //toast(`${product.title} ajoute au panier`);
+  // };

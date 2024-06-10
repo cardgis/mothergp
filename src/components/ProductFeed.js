@@ -1,12 +1,11 @@
-// @ts-nocheck
-"use client"; // Indique un composant client
-// src/components/ProductFeed.js
-
+"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import CurrencyFormat from "react-currency-format";
-
+import { useRecoilState } from "recoil";
+import cartState from "../atoms/cartState";
+//import toast from "react-hot-toast";
 /**
  * @typedef {Object} Product
  * @property {number} id
@@ -17,11 +16,52 @@ import CurrencyFormat from "react-currency-format";
  * @property {string} image
  */
 
-export default function ProductFeed() {
+export default function ProductFeed({}) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [rating] = useState(5);
+  const [cartItem, setCartItem] = useRecoilState(cartState);
+  const addItemToCart = (product) => {
+    const existingProductIndex = cartItem.findIndex(
+      (item) => item.product.id === product.id
+    );
+
+    if (existingProductIndex === -1) {
+      // Le produit n'est pas encore dans le panier
+      setCartItem((prevCartItems) => [
+        ...prevCartItems,
+        { product: product, quantity: 1 }, // Ajout du produit avec quantité 1
+      ]);
+    } else {
+      // Le produit est déjà dans le panier, incrémente la quantité
+      setCartItem((prevCartItems) =>
+        prevCartItems.map((item, index) =>
+          index === existingProductIndex
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    }
+  };
+
+  // const addItemToCart = (product) => {
+  //   // Pass the whole product object
+  //   if (cartItem.findIndex((pro) => pro.id === product.id) === -1) {
+  //     setCartItem((prevState) => [...prevState, product]);
+  //     toast(`${product.title} ajouté au panier`); // Assuming toast is defined
+  //   } else {
+  //     setCartItem((prevState) => {
+  //       return prevState.map((item) => {
+  //         return item.id === product.id
+  //           ? { ...item, quantity: item.quantity + 1 }
+  //           : item;
+  //       });
+  //     });
+  //     toast(`${product.title} est déjà dans le panier`); // Example toast message
+  //   }
+  // };
+
   // Pas besoin de typage explicite ici
   useEffect(() => {
     const fetchProducts = async () => {
@@ -86,7 +126,10 @@ export default function ProductFeed() {
                   />
                 </div>
 
-                <button className="mt-auto mb-6 button">
+                <button
+                  onClick={() => addItemToCart(product)}
+                  className="mt-auto mb-6 button"
+                >
                   Ajouter au Panier
                 </button>
               </div>
@@ -97,49 +140,3 @@ export default function ProductFeed() {
     </>
   );
 }
-
-// app/page.tsx
-// "use client";
-
-// import React, { useEffect } from "react";
-
-// export default function ProductFeed({ products }) {
-//   // ... (votre code existant)
-
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       try {
-//         const res = await fetch("/api/products");
-//         const data = await res.json();
-//         setProducts(data);
-//       } catch (error) {
-//         setError("Erreur lors du chargement des produits.");
-//         console.error(error);
-//       } finally {
-//         setIsLoading(false);
-//       }
-//     };
-
-//     fetchProducts();
-//   }, []);
-
-//   // ... (le reste de votre code)
-
-//   return (
-//     <div>
-//       <h1>Liste des produits</h1>
-//       <ul>
-//         {products.map((product) => (
-//           <div key={product.id}>
-//             <h3>{product.title}</h3>
-//             <p>{product.price}</p>
-//             <p>{product.category}</p>
-//             <p>{product.description}</p>
-//             <p>{product.image}</p>
-//           </div>
-//         ))}
-//       </ul>
-//     </div>
-
-//   );
-// }
