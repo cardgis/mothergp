@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import cartState from "../atoms/cartState";
-import CartList from "./cartList"; // Assuming you have a CartList component
+import CartList from "../components/cartList";
 
 export default function Cart() {
   const cartItems = useRecoilValue(cartState);
