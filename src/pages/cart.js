@@ -7,6 +7,7 @@ import {
   updateQuantity,
   calculateTotal,
 } from "../utils/cart";
+import { calculateTotal } from "../utils/cart";
 import CartList from "../components/CartList";
 
 const Cart = () => {
