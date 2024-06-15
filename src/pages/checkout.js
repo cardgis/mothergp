@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { cartState } from "../atoms/cartState";
 import CartList from "../components/CartList";
-import { calculateTotal } from "../app/utils/cart";
+import { calculateTotal } from "../utils/cart";
 
 const Checkout = () => {
   const cartItems = useRecoilValue(cartState);
