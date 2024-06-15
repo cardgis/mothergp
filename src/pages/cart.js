@@ -1,46 +1,54 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
-import cartState from "../atoms/cartState";
-import CartList from "../components/cartList";
+import { useRecoilState } from "recoil";
+import {
+  cartState,
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  calculateTotal,
+} from "../utils/cart";
+import CartList from "../components/CartList";
 
-export default function Cart() {
-  const cartItems = useRecoilValue(cartState);
+const Cart = () => {
+  const [cart, setCart] = useRecoilState(cartState);
+
+  const handleAddToCart = (product) => {
+    addToCart(cart, setCart, product);
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    removeFromCart(cart, setCart, productId);
+  };
+
+  const handleUpdateQuantity = (productId, quantity) => {
+    updateQuantity(cart, setCart, productId, quantity);
+  };
 
   return (
-    <div>
-      {cartItems.length === 0 ? (
-        <h1>Votre panier est vide</h1>
-      ) : (
-        <ul>
-          {cartItems.map((item) => (
-            <li key={item.product.id}>
-              <CartList product={item.product} quantity={item.quantity} />
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="container p-4 mx-auto">
+      <h1 className="mb-4 text-2xl font-bold">Votre Panier</h1>
+      <div id="cart-items" className="space-y-4">
+        {cart.length === 0 ? (
+          <h1>Votre panier est vide</h1>
+        ) : (
+          cart.map((item) => (
+            <CartList
+              key={item.id}
+              product={item}
+              quantity={item.quantity}
+              onRemove={handleRemoveFromCart}
+              onQuantityChange={handleUpdateQuantity}
+            />
+          ))
+        )}
+      </div>
+      <div className="mt-4 text-right">
+        <span id="cart-total" className="text-xl font-bold">
+          Total: {calculateTotal(cart)} €
+        </span>
+      </div>
     </div>
   );
-}
+};
 
-// import React from "react";
-// import { useRecoilState } from "recoil";
-// import cartState from "../atoms/cartState";
-
-// export const cart = () => {
-//   const [cartItem, setCartItem] = useRecoilState(cartState);
-
-//   return (
-//     <>
-//       <div>
-//         {cartItem.length <= 0 ? (
-//           <h1>Votre panier est vide</h1>
-//         ) : (
-//           cartItem.map((item) => <cartList key={item.id} data={item} />)
-//         )}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default cart;
+export default Cart;

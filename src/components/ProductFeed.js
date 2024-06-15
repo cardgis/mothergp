@@ -5,6 +5,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import CurrencyFormat from "react-currency-format";
 import { useRecoilState } from "recoil";
 import cartState from "../atoms/cartState";
+
 //import toast from "react-hot-toast";
 /**
  * @typedef {Object} Product
@@ -26,6 +27,11 @@ export default function ProductFeed({}) {
     const existingProductIndex = cartItem.findIndex(
       (item) => item.product.id === product.id
     );
+
+    // const handleAddToCart = (product) => {
+    //   const updatedCart = addToCart(product);
+    //   setCart(updatedCart);
+    // };
 
     if (existingProductIndex === -1) {
       // Le produit n'est pas encore dans le panier
