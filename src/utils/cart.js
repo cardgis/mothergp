@@ -27,8 +27,11 @@ export const updateQuantity = (cart, setCart, productId, quantity) => {
 };
 
 // Fonction pour calculer le total du panier
+// export const calculateTotal = (cart) => {
+//   return cart
+//     .reduce((acc, item) => acc + item.price * item.quantity, 0)
+//     .toFixed(2);
+// src/utils/cart.js
 export const calculateTotal = (cart) => {
-  return cart
-    .reduce((acc, item) => acc + item.price * item.quantity, 0)
-    .toFixed(2);
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 };
