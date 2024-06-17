@@ -1,9 +1,16 @@
+// pages/checkout.js
+
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { cartState } from "../atoms/cartState";
-import CartList from "../components/CartList";
 import { calculateTotal } from "../utils/cart";
 import Header from "../components/Header";
+import CartList from "../components/CartList";
+import CheckoutForm from "../components/CheckoutForm";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY");
 
 const Checkout = () => {
   const cartItems = useRecoilValue(cartState);
@@ -11,9 +18,7 @@ const Checkout = () => {
 
   return (
     <>
-      <div>
-        <Header />
-      </div>
+      <Header />
       <div className="container p-4 mx-auto">
         <h1 className="mb-4 text-2xl font-bold">Panier</h1>
         {cartItems.length === 0 ? (
@@ -27,12 +32,12 @@ const Checkout = () => {
                 </li>
               ))}
             </ul>
-            <div className="total">
-              <h2>Total: {total.toFixed(2)} €</h2>
+            <div className="my-8 total">
+              <h2 className="text-xl font-bold">Total: {total.toFixed(2)} €</h2>
             </div>
-            <button className="p-2 mt-5 text-white bg-blue-500 rounded">
-              Procéder au paiement
-            </button>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
           </div>
         )}
       </div>
@@ -41,6 +46,148 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+// // pages/checkout.js
+
+// import React from "react";
+// import { useRecoilValue } from "recoil";
+// import { cartState } from "../atoms/cartState";
+// import { calculateTotal } from "../utils/cart";
+// import Header from "../components/Header";
+// import CartList from "../components/CartList";
+// import CheckoutForm from "../components/CheckoutForm";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+
+// const stripePromise = loadStripe(
+//   "sk_test_51PSh1tEkJNki03eoLpRSxvLda55DL6K8BuMcFWO49AtEV7yZw6kr8xMhiLAtOBbIvU6hpGrlcdlxltl8wLVRpwCj00q5aRKVkP"
+// );
+
+// const Checkout = () => {
+//   const cartItems = useRecoilValue(cartState);
+//   const total = calculateTotal(cartItems);
+
+//   return (
+//     <>
+//       <div>
+//         <Header />
+//       </div>
+//       <div className="container p-4 mx-auto">
+//         <h1 className="mb-4 text-2xl font-bold">Panier</h1>
+//         {cartItems.length === 0 ? (
+//           <h1>Votre panier est vide</h1>
+//         ) : (
+//           <div>
+//             <ul>
+//               {cartItems.map((item) => (
+//                 <li key={item.product.id}>
+//                   <CartList product={item.product} quantity={item.quantity} />
+//                 </li>
+//               ))}
+//             </ul>
+//             <div className="total">
+//               <h2>Total: {total.toFixed(2)} €</h2>
+//             </div>
+//             <Elements stripe={stripePromise}>
+//               <CheckoutForm />
+//             </Elements>
+//           </div>
+//         )}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Checkout;
+
+// // src/pages/checkout.js
+// import React from "react";
+// import { useRecoilValue } from "recoil";
+// import { calculateTotal } from "../utils/cart";
+// import { cartState } from "../atoms/cartState";
+// import CartList from "../components/CartList";
+// import CheckoutForm from "../components/CheckoutForm";
+// import Header from "../components/Header";
+
+// const Checkout = () => {
+//   const cartItems = useRecoilValue(cartState);
+//   const total = calculateTotal(cartItems);
+
+//   return (
+//     <>
+//       <div>
+//         <Header />
+//       </div>
+//       <div className="container p-4 mx-auto">
+//         <h1 className="mb-4 text-2xl font-bold">Panier</h1>
+//         {cartItems.length === 0 ? (
+//           <h1>Votre panier est vide</h1>
+//         ) : (
+//           <div>
+//             <ul>
+//               {cartItems.map((item) => (
+//                 <li key={item.product.id}>
+//                   <CartList product={item.product} quantity={item.quantity} />
+//                 </li>
+//               ))}
+//             </ul>
+//             <div className="total">
+//               <h2>Total: {total.toFixed(2)} €</h2>
+//             </div>
+//             {/* <CheckoutForm /> */}
+//           </div>
+//         )}
+//       </div>
+//       <CheckoutForm />
+//     </>
+//   );
+// };
+
+// export default Checkout;
+
+// import React from "react";
+// import { useRecoilValue } from "recoil";
+// import { cartState } from "../atoms/cartState";
+// import CartList from "../components/CartList";
+// import { calculateTotal } from "../utils/cart";
+// import Header from "../components/Header";
+
+// const Checkout = () => {
+//   const cartItems = useRecoilValue(cartState);
+//   const total = calculateTotal(cartItems);
+
+//   return (
+//     <>
+//       <div>
+//         <Header />
+//       </div>
+//       <div className="container p-4 mx-auto">
+//         <h1 className="mb-4 text-2xl font-bold">Panier</h1>
+//         {cartItems.length === 0 ? (
+//           <h1>Votre panier est vide</h1>
+//         ) : (
+//           <div>
+//             <ul>
+//               {cartItems.map((item) => (
+//                 <li key={item.product.id}>
+//                   <CartList product={item.product} quantity={item.quantity} />
+//                 </li>
+//               ))}
+//             </ul>
+//             <div className="total">
+//               <h2>Total: {total.toFixed(2)} €</h2>
+//             </div>
+//             <button className="p-2 mt-5 text-white bg-blue-500 rounded">
+//               Procéder au paiement
+//             </button>
+//           </div>
+//         )}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Checkout;
 
 // import React from "react";
 // import Header from "../components/Header";
