@@ -119,7 +119,7 @@ import {
   updateQuantity,
   calculateTotal,
 } from "../utils/cart";
-import { CartList } from "../components/CartList";
+import CartList from "../components/CartList";
 import { useRouter } from "next/router";
 
 const Cart = () => {
