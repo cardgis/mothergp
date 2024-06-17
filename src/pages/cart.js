@@ -121,6 +121,7 @@ import {
 } from "../utils/cart";
 import CartList from "../components/CartList";
 import { useRouter } from "next/router";
+import CartList from "../components/CartList";
 
 const Cart = () => {
   const [cart, setCart] = useRecoilState(cartState);
