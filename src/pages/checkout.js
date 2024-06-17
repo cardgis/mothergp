@@ -3,34 +3,40 @@ import { useRecoilValue } from "recoil";
 import { cartState } from "../atoms/cartState";
 import CartList from "../components/CartList";
 import { calculateTotal } from "../utils/cart";
+import Header from "../components/Header";
 
 const Checkout = () => {
   const cartItems = useRecoilValue(cartState);
   const total = calculateTotal(cartItems);
 
   return (
-    <div className="container p-4 mx-auto">
-      <h1 className="mb-4 text-2xl font-bold">Checkout</h1>
-      {cartItems.length === 0 ? (
-        <h1>Your cart is empty</h1>
-      ) : (
-        <div>
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.product.id}>
-                <CartList product={item.product} quantity={item.quantity} />
-              </li>
-            ))}
-          </ul>
-          <div className="total">
-            <h2>Total: {total.toFixed(2)} €</h2>
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="container p-4 mx-auto">
+        <h1 className="mb-4 text-2xl font-bold">Panier</h1>
+        {cartItems.length === 0 ? (
+          <h1>Votre panier est vide</h1>
+        ) : (
+          <div>
+            <ul>
+              {cartItems.map((item) => (
+                <li key={item.product.id}>
+                  <CartList product={item.product} quantity={item.quantity} />
+                </li>
+              ))}
+            </ul>
+            <div className="total">
+              <h2>Total: {total.toFixed(2)} €</h2>
+            </div>
+            <button className="p-2 mt-5 text-white bg-blue-500 rounded">
+              Procéder au paiement
+            </button>
           </div>
-          <button className="p-2 text-white bg-blue-500 rounded">
-            Proceed to Payment
-          </button>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
