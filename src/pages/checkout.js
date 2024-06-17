@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { cartState } from "../atoms/cartState";
 import { calculateTotal } from "../utils/cart";
 import Header from "../components/Header";
-import CartList from "../components/CartList";
+import { CartList } from "../components/CartList";
 import CheckoutForm from "../components/CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";

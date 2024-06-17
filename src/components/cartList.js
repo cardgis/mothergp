@@ -93,7 +93,7 @@
 import React from "react";
 import Image from "next/image";
 
-const CartList = ({ product, quantity, onRemove, onQuantityChange }) => (
+export const CartList = ({ product, quantity, onRemove, onQuantityChange }) => (
   <div className="flex items-center justify-between p-4 border-b">
     <div className="flex items-center space-x-4">
       <Image
@@ -132,4 +132,4 @@ const CartList = ({ product, quantity, onRemove, onQuantityChange }) => (
   </div>
 );
 
-export default CartList;
+//export default CartList;
