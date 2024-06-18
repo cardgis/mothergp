@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { cartState } from "../atoms/cartState";
 import { calculateTotal } from "../utils/cart";
 import Header from "../components/Header";
-import Cartlist from "../components/cartList";
+import CartList from "../components/CartList";
 import CheckoutForm from "../components/CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -28,7 +28,7 @@ const Checkout = () => {
             <ul>
               {cartItems.map((item) => (
                 <li key={item.product.id}>
-                  <Cartlist product={item.product} quantity={item.quantity} />
+                  <CartList product={item.product} quantity={item.quantity} />
                 </li>
               ))}
             </ul>

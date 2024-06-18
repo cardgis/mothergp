@@ -119,7 +119,7 @@ import {
   updateQuantity,
   calculateTotal,
 } from "../utils/cart";
-import Cartlist from "../components/cartList";
+import CartList from "../components/CartList";
 import { useRouter } from "next/router";
 
 const Cart = () => {
@@ -150,7 +150,7 @@ const Cart = () => {
           <h1>Votre panier est vide</h1>
         ) : (
           cart.map((item) => (
-            <Cartlist
+            <CartList
               key={item.id}
               product={item}
               quantity={item.quantity}
