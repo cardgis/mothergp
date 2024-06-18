@@ -40,4 +40,4 @@ const Cartlist = ({ product, quantity, onRemove, onQuantityChange }) => (
   </div>
 );
 
-export default CartList;
+export default Cartlist;
