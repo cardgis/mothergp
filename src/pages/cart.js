@@ -113,12 +113,12 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import {
-  cartState,
   addToCart,
   removeFromCart,
   updateQuantity,
   calculateTotal,
 } from "../utils/cart";
+import cartState from "../atoms/cartState";
 import CartList from "../components/CartList";
 import { useRouter } from "next/router";
 
