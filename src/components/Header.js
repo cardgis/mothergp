@@ -138,8 +138,8 @@ function Header() {
           <Image
             // src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-delivery-retail-truck-association-logo-symbol-png-image_3570987.jpg"
             src="/favicon.ico"
-            height={40}
-            width={60}
+            height={20}
+            width={40}
             alt="logo"
             objectFit="contain"
             className="cursor-pointer"
