@@ -134,11 +134,12 @@ function Header() {
     <header>
       <div className="flex items-center flex-grow p-1 py-2 bg-amazon_blue">
         {/* Logo */}
-        <div className="flex items-center flex-grow mt-2 mr-6 sm:flex-grow-0">
+        <div className="flex items-center flex-grow mt-2 mr-6 sm:flex-grow-0 hover:scale-125">
           <Image
-            src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-delivery-retail-truck-association-logo-symbol-png-image_3570987.jpg"
-            height={150}
-            width={40}
+            // src="https://png.pngtree.com/png-clipart/20200709/original/pngtree-delivery-retail-truck-association-logo-symbol-png-image_3570987.jpg"
+            src="/favicon.ico"
+            height={40}
+            width={60}
             alt="logo"
             objectFit="contain"
             className="cursor-pointer"
@@ -180,6 +181,7 @@ function Header() {
           </div>
 
           {/* Panier */}
+
           <div
             onClick={() => router.push("/checkout")}
             className="relative flex items-center link"
