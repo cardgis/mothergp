@@ -6,6 +6,7 @@ function gp() {
     <>
       <div>
         <Header />
+        <h2>Les adresses d'envoi et de depot</h2>
       </div>
     </>
   );
