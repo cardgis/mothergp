@@ -1,10 +1,13 @@
 import React from "react";
+import Header from "../components/Header";
 
 function gp() {
   return (
-    <div>
-      <h1>Bienvenue GP</h1>
-    </div>
+    <>
+      <div>
+        <Header />
+      </div>
+    </>
   );
 }
 
